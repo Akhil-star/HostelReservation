@@ -89,6 +89,7 @@ public class HotelReservationTest {
 
     @Test
     public void givenSpecialRates_WhenAddedToHotel_ShouldBeEqual() {
+        hotelReservation = new HotelReservation();
         Hotel hotel = new Hotel("Bridgewood", 160, 50, "2020-02-12", "2020-02-14",4);
         Hotel hotel1 = new Hotel("Lakewood", 110, 90, "2020-01-25", "2020-01-26", 3);
         Hotel hotel3 = new Hotel("Ridgewood", 220, 150, "2020-11-01", "2020-11-04",5);
@@ -97,4 +98,41 @@ public class HotelReservationTest {
         Assert.assertEquals(110, hotel.specialWeekdayRate, 0);
         Assert.assertEquals(50, hotel.specialWeekendRate, 0);
     }
+    @Test
+    public void givenDate_WhenInvalid_ShouldThrowException() {
+        try {
+            String startDate = "2020/12/01";
+            hotelReservation.validateDate(startDate);
+            Assert.assertTrue(false);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assert.assertTrue(true);
+        }
+    }
+
+    @Test
+    public void givenCustomerType_WhenInvalid_ShouldThrowException() {
+        try {
+            String customerType = "Reward";
+            hotelReservation.validateCustomerType(customerType);
+            Assert.assertTrue(false);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assert.assertTrue(true);
+        }
+    }
+
+    @Test
+    public void givenHotelList_WhenCheapestBestRatedHotelInGivenDateRangeForRewardCustomerFound_ShouldBeTrue() {
+        hotelReservation = new HotelReservation();
+        hotelReservation.hotelList.add(new Hotel("Lakewood", 110, 90, "2020-01-25", "2020-01-26", 3,
+                80, 80, "Reward"));
+        hotelReservation.hotelList.add(new Hotel("Bridgewood", 160, 50, "2020-02-12", "2020-02-14", 4,
+                110, 50, "Reward"));
+        hotelReservation.hotelList.add(new Hotel("Ridgewood", 220, 150, "2020-11-01", "2020-11-04", 5,
+                100, 40, "Reward"));
+        Hotel cheapestBestRatedHotelForRewardCustomers = hotelReservation.findCheapestBestRatedHotelByWeekdayRatesForRewardCustomers("2020-01-01", "2020-12-31");
+        Assert.assertEquals("Ridgewood", cheapestBestRatedHotelForRewardCustomers.hotelName);
+    }
 }
+

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.cg.hotelreservation.HotelReservationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-18T12:27:46" hostname="DESKTOP-AURK5V2" time="0.003">
+<testsuite name="com.cg.hotelreservation.HotelReservationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-18T12:48:59" hostname="DESKTOP-AURK5V2" time="0.005">
   <properties/>
-  <testcase name="givenSpecialRates_WhenAddedToHotel_ShouldBeEqual" classname="com.cg.hotelreservation.HotelReservationTest" time="0.003"/>
+  <testcase name="givenHotelList_WhenCheapestBestRatedHotelInGivenDateRangeForRewardCustomerFound_ShouldBeTrue" classname="com.cg.hotelreservation.HotelReservationTest" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
