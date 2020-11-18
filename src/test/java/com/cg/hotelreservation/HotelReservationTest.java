@@ -57,4 +57,14 @@ public class HotelReservationTest {
         Assert.assertEquals("Lakewood", cheapestHotelByWeekdayRates.hotelName);
         Assert.assertEquals("Bridgewood", cheapestHotelByWeekendRates.hotelName);
     }
+
+    @Test
+    public void givenDetailsIncludingRatings_WhenHotelObjectCreated_ShouldNotBeNull() {
+        Hotel hotel1 = new Hotel("Lakewood", 110, 90, "2020-01-25", "2020-01-26", 3);
+        Hotel hotel2 = new Hotel("Bridgewood", 160, 50, "2020-02-12", "2020-02-14",4);
+        Hotel hotel3 = new Hotel("Ridgewood", 220, 150, "2020-11-01", "2020-11-04",5);
+        Assert.assertNotNull(hotel1);
+        Assert.assertNotNull(hotel2);
+        Assert.assertNotNull(hotel3);
+    }
 }
