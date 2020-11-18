@@ -24,4 +24,14 @@ public class HotelReservationTest {
         hotelReservation.hotelList.add(new Hotel("Ridgewood", 220));
         Assert.assertEquals(3, hotelReservation.hotelList.size());
     }
+
+    @Test
+    public void givenHotelList_ShouldReturnCheapestHotelInGivenDateRange() {
+        hotelReservation = new HotelReservation();
+        hotelReservation.hotelList.add(new Hotel("Lakewood", 110, "2020-01-25", "2020-01-26"));
+        hotelReservation.hotelList.add(new Hotel("Bridgewod", 160, "2020-02-12", "2020-02-14"));
+        hotelReservation.hotelList.add(new Hotel("Ridgewood", 220, "2020-11-01", "2020-11-04"));
+        Hotel cheapestHotel = hotelReservation.findCheapestHotel("2020-01-01", "2020-12-31");
+        Assert.assertEquals("Lakewood", cheapestHotel.hotelName);
+    }
 }
