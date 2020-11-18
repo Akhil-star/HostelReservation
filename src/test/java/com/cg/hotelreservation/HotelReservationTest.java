@@ -77,4 +77,13 @@ public class HotelReservationTest {
         Hotel cheapestBestRatedHotel = hotelReservation.findCheapestBestRatedHotelByWeekdayRates("2020-01-01", "2020-12-31");
         Assert.assertEquals("Ridgewood", cheapestBestRatedHotel.hotelName);
     }
+    @Test
+    public void givenHotelList_WhenBestRatedHotelFound_ShouldBeTrue() {
+        hotelReservation = new HotelReservation();
+        hotelReservation.hotelList.add(new Hotel("Lakewood", 110, 90, "2020-01-25", "2020-01-26", 3));
+        hotelReservation.hotelList.add(new Hotel("Bridgewood", 160, 50, "2020-02-12", "2020-02-14", 4));
+        hotelReservation.hotelList.add(new Hotel("Ridgewood", 220, 150, "2020-11-01", "2020-11-04", 5));
+        Hotel cheapestBestRatedHotel = hotelReservation.findCheapestBestRatedHotelByWeekdayRates("2020-01-01", "2020-12-31");
+        Assert.assertEquals("Ridgewood", cheapestBestRatedHotel.hotelName);
+    }
 }
