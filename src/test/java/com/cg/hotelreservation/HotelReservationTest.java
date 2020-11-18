@@ -45,4 +45,16 @@ public class HotelReservationTest {
         Assert.assertNotNull(hotel2);
         Assert.assertNotNull(hotel3);
     }
+
+    @Test
+    public void givenHotelList_WhenCheapestByWeekendAndWeekdayRatesFound_ShouldReturntrue() {
+        hotelReservation = new HotelReservation();
+        hotelReservation.hotelList.add(new Hotel("Lakewood", 110, 90, "2020-01-25", "2020-01-26"));
+        hotelReservation.hotelList.add(new Hotel("Bridgewood", 160, 50, "2020-02-12", "2020-02-14"));
+        hotelReservation.hotelList.add(new Hotel("Ridgewood", 220, 150, "2020-11-01", "2020-11-04"));
+        Hotel cheapestHotelByWeekdayRates = hotelReservation.findCheapestHotelByWeekdayRates("2020-01-01", "2020-12-31");
+        Hotel cheapestHotelByWeekendRates = hotelReservation.findCheapestHotelByWeekendRates("2020-01-01", "2020-12-31");
+        Assert.assertEquals("Lakewood", cheapestHotelByWeekdayRates.hotelName);
+        Assert.assertEquals("Bridgewood", cheapestHotelByWeekendRates.hotelName);
+    }
 }
